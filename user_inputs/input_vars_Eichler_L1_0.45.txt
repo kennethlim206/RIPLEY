@@ -1,0 +1,141 @@
+Author: Kenneth Justin Lim
+V3.02 10/02/17
+
+This file will be copied into all analysis REDs (RIPLEY Execution Directories).
+
+Lines beginning with $ will be read into the pipeline after the => characters. Lines containing * can be left blank, if applicable. Do not edit the format of this file.
+
+
+
+ =====================================================================================================================
+||/                                                                                                                 \||
+||                                                                                                                   ||
+||                                                                                                                   ||
+||                                                     - RIPLEY -                                                    ||
+||                                                                                                                   ||
+||                                                                                                                   ||
+||\                                                                                                                 /||
+ =====================================================================================================================
+
+
+
+------------------------------------------------- USER NOTES ----------------------------------------------------------
+
+CURRENT DATE: 10/03/17
+
+DESCRIPTION OF CURRENT PROJECT: L001 old Eichler dataset.
+
+------------------------------------------------- REFERENCE GENOME LIST (X) -------------------------------------------
+
+X	ORGANISM	SPECIES	ASSEMBLY	GENOME
+-------------------------------------------
+0	Human	Homo_sapiens	Gencode	GRCh38
+1	Human	Homo_sapiens	Gencode	GRCh37
+2	Human	Homo_sapiens	UCSC	hg19
+3	Mouse	Mus_musculus	Gencode	GRCm38
+4	Mouse	Mus_musculus	Gencode	GRCm37
+5	Mouse	Mus_musculus	Ensembl	GRCm38
+6	Mouse	Mus_musculus	UCSC	mm10
+7	Mouse	Mus_musculus	UCSC	mm9
+8	Rat	Rattus_norvegicus	UCSC	rn5
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+---                                                                                                                 ---
+---                                             - PRE PROCESSING -                                                  ---
+---                                                                                                                 ---
+-----------------------------------------------------------------------------------------------------------------------
+
+
+
+------------------------------------------------- PULL RAW DATA -------------------------------------------------------
+
+$ 0. * SRR NAMES (COMMA DELIMITED) => 
+
+$ 1. * FTP COMMAND => 
+
+$ 2. TO DIRECTORY => /share/nordlab/rawdata/STARR-Eichler
+
+------------------------------------------------- SAMPLE INFO ---------------------------------------------------------
+
+$ 3. SINGLE OR PAIRED END DATA (S/P) => P
+
+$ 4. * PAIRED SUFFIX (DIFFERENTIATING SUBSTRING OF FILENAMES) => _L001_R1_001
+
+------------------------------------------------- INDEXING PREP -------------------------------------------------------
+
+$ 5. REFERENCE GENOME SELECTION (SEE TABLE ABOVE, INPUT THE NUMBER UNDER X NEXT TO DESIRED GENOME) => 0
+
+$ 6. CUSTOMIZATION (T/F) => F
+
+------------------------------------------------- CUSTOMIZATIONS (ONLY IF CUSTOMIZATION == T) -------------------------
+
+$ 7. * REFERENCE GENOME ADDITIONS => 
+
+$ 8. * ANNOTATION ADDITIONS => 
+
+$ 9. * CUSTOM COMBINED GENOME FILE NAME => 
+
+$ 10. * CUSTOM COMBINED ANNOTATIONS FILE NAME => 
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+---                                                                                                                 ---
+---                                             - STAR PROCESSING -                                                 ---
+---                                                                                                                 ---
+-----------------------------------------------------------------------------------------------------------------------
+
+
+
+$ 11. STAR VERSION => star/2.5.2b
+
+------------------------------------------------- INDEXING ------------------------------------------------------------
+
+$ 12. OUTPUT FOR INDEX DIRECTORY => /share/nordlab/users/kjulim/STAR_INDEX/Human_Gencode_GRCh38_250bp
+
+$ 13. RUN THREAD N => 8
+
+$ 14. SJBD OVERHANG => 249
+
+$ 15. * OTHER INDEX PARAMETERS (WILL BE APPENDED TO COMMAND) => 
+
+------------------------------------------------- MAPPING -------------------------------------------------------------
+
+$ 16. OUTPUT FOR MAPPING DIRECTORY => /share/nordlab/users/kjulim/Eichler_L001_processed_0.45mm
+
+$ 17. FASTA SUFFIX (.fasta, .fastq, .fa, etc.) => .fastq
+
+$ 18. * ZIPPED (.gz, .bzip2) => 
+
+$ 19. * OTHER MAPPING PARAMETERS (WILL BE APPENDED TO COMMAND) => --outFilterScoreMinOverLread 0.45 --outFilterMatchNminOverLread 0.45
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+---                                                                                                                 ---
+---                                             - POST PROCESSING -                                                 ---
+---                                                                                                                 ---
+-----------------------------------------------------------------------------------------------------------------------
+
+
+
+------------------------------------------------- FEATURE COUNTS (COVERAGE BY GENE) -----------------------------------
+
+$ 20. * SUBREAD VERSION => subread/1.5.0-p1
+
+$ 21. * OTHER FC PARAMETERS (WILL BE APPENDED TO COMMAND) => -t exon
+
+------------------------------------------------- MPILEUP (COVERAGE BY NUCLEOTIDE) ------------------------------------
+
+$ 22. * SAMTOOLS VERSION => samtools/1.4.1
+
+$ 23. * INPUT AMPLICONS FILE NAME (NO PATH) => eichler_amps_GRCh38_unflanked.bed
+
+$ 24. * OTHER MP PARAMETERS (WILL BE APPENDED TO COMMAND) => -t ADF
+
+-----------------------------------------------------------------------------------------------------------------------
+
+
+

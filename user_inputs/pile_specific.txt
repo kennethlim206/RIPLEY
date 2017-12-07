@@ -1,0 +1,2 @@
+Eichler-R1_S4_PE.Aligned.sortedByCoord.out.bam	252UN_Control_Arid1b_1
+Eichler-Maxiprep_S7_PE.Aligned.sortedByCoord.out.bam	260_Control_Dmrt3_hs112

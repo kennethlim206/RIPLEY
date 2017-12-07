@@ -1,0 +1,127 @@
+Author: Kenneth Justin Lim
+V3.01 09/22/17
+
+This file will be copied into all analysis REDs (RIPLEY Execution Directories).
+
+Lines beginning with $ will be read into the pipeline after the => character. Lines containing * can be left blank, if applicable. Do not edit the format of this file.
+
+ =====================================================================================================================
+||/                                                                                                                 \||
+||                                                                                                                   ||
+||                                                                                                                   ||
+||                                                     - RIPLEY -                                                    ||
+||                                                                                                                   ||
+||                                                                                                                   ||
+||\                                                                                                                 /||
+ =====================================================================================================================
+
+
+
+------------------------------------------------- USER NOTES ----------------------------------------------------------
+
+CURRENT DATE: 09/22/17
+
+DESCRIPTION OF CURRENT PROJECT: Chd8 Durak NEW! WOOHOO!
+
+------------------------------------------------- REFERENCE GENOME LIST (X) -------------------------------------------
+
+X	ORGANISM	SPECIES	ASSEMBLY	GENOME
+-------------------------------------------
+0	Human	Homo_sapiens	Gencode	GRCh38
+1	Human	Homo_sapiens	Gencode	GRCh37
+2	Human	Homo_sapiens	UCSC	hg19
+3	Mouse	Mus_musculus	Gencode	GRCm38
+4	Mouse	Mus_musculus	Gencode	GRCm37
+5	Mouse	Mus_musculus	Ensembl	GRCm38
+6	Mouse	Mus_musculus	UCSC	mm10
+7	Mouse	Mus_musculus	UCSC	mm9
+8	Rat	Rattus_norvegicus	UCSC	rn5
+
+-----------------------------------------------------------------------------------------------------------------------
+------------------------------------------------- PRE PROCESSING ------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------
+
+
+
+------------------------------------------------- PULL RAW DATA -------------------------------------------------------
+
+$ 0. * SRR NAMES (COMMA DELIMITED) => 
+
+$ 1. * FTP COMMAND => 
+
+$ 2. TO DIRECTORY => /share/nordlab/rawdata/Chd8_Durak_new/RNAseq
+
+------------------------------------------------- SAMPLE INFO ---------------------------------------------------------
+
+$ 3. SINGLE OR PAIRED END DATA (S/P) => P
+
+$ 4. * PAIRED SUFFIX (DIFFERENTIATING SUBSTRING OF FILENAMES) => _1
+
+------------------------------------------------- INDEXING PREP -------------------------------------------------------
+
+$ 5. REFERENCE GENOME SELECTION (SEE TABLE ABOVE, INPUT THE NUMBER UNDER X NEXT TO DESIRED GENOME) => 7
+
+$ 6. CUSTOMIZATION (T/F) => F
+
+------------------------------------------------- CUSTOMIZATIONS (ONLY IF CUSTOMIZATION == T) -------------------------
+
+$ 7. * REFERENCE GENOME ADDITIONS => 
+
+$ 8. * ANNOTATION ADDITIONS => 
+
+$ 9. * CUSTOM COMBINED GENOME FILE NAME => 
+
+$ 10. * CUSTOM COMBINED ANNOTATIONS FILE NAME => 
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+------------------------------------------------- STAR PROCESSING -----------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------
+
+
+
+$ 11. STAR VERSION => star/2.5.2b
+
+------------------------------------------------- INDEXING ------------------------------------------------------------
+
+$ 12. OUTPUT FOR INDEX DIRECTORY => /share/nordlab/users/kjulim/STAR_INDEX/Mouse_UCSC_mm9_100bp
+
+$ 13. RUN THREAD N => 8
+
+$ 14. SJBD OVERHANG => 99
+
+$ 15. * OTHER INDEX PARAMETERS (WILL BE APPENDED TO COMMAND) => 
+
+------------------------------------------------- MAPPING -------------------------------------------------------------
+
+$ 16. OUTPUT FOR MAPPING DIRECTORY => /share/nordlab/users/kjulim/Chd8_Durak_re-processed
+
+$ 17. FASTA SUFFIX (.fasta, .fastq, .fa, etc.) => .fastq
+
+$ 18. * ZIPPED (.gz, .bzip2) => .gz
+
+$ 19. * OTHER MAPPING PARAMETERS (WILL BE APPENDED TO COMMAND) => --outFilterScoreMinOverLread 0.1 --outFilterMatchNminOverLread 0.1
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+------------------------------------------------- POST PROCESSING -----------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------
+
+
+
+------------------------------------------------- FEATURE COUNTS ------------------------------------------------------
+
+$ 20. SUBREAD VERSION => subread/1.5.0-p1
+
+$ 21. * OTHER FC PARAMETERS (WILL BE APPENDED TO COMMAND) => -M -O -t exon
+
+------------------------------------------------- BAM READ COUNTS -----------------------------------------------------
+
+$ 22. * INPUT AMPLICONS FILE NAME (NO PATH) => 
+
+-----------------------------------------------------------------------------------------------------------------------
+
+
+

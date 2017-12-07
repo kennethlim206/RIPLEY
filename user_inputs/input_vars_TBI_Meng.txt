@@ -1,0 +1,141 @@
+Author: Kenneth Justin Lim
+V3.02 10/02/17
+
+This file will be copied into all analysis REDs (RIPLEY Execution Directories).
+
+Lines beginning with $ will be read into the pipeline after the => characters. Lines containing * can be left blank, if applicable. Do not edit the format of this file.
+
+
+
+ =====================================================================================================================
+||/                                                                                                                 \||
+||                                                                                                                   ||
+||                                                                                                                   ||
+||                                                     - RIPLEY -                                                    ||
+||                                                                                                                   ||
+||                                                                                                                   ||
+||\                                                                                                                 /||
+ =====================================================================================================================
+
+
+
+------------------------------------------------- USER NOTES ----------------------------------------------------------
+
+CURRENT DATE: 10/03/17
+
+DESCRIPTION OF CURRENT PROJECT: TBI Meng Data 2 GSE sets combined into 1. Second GSE set throwing error when downloading .fastq files with SRR ID. Needed to use FTP command for second set, and then convert.
+
+------------------------------------------------- REFERENCE GENOME LIST (X) -------------------------------------------
+
+X	ORGANISM	SPECIES	ASSEMBLY	GENOME
+-------------------------------------------
+0	Human	Homo_sapiens	Gencode	GRCh38
+1	Human	Homo_sapiens	Gencode	GRCh37
+2	Human	Homo_sapiens	UCSC	hg19
+3	Mouse	Mus_musculus	Gencode	GRCm38
+4	Mouse	Mus_musculus	Gencode	GRCm37
+5	Mouse	Mus_musculus	Ensembl	GRCm38
+6	Mouse	Mus_musculus	UCSC	mm10
+7	Mouse	Mus_musculus	UCSC	mm9
+8	Rat	Rattus_norvegicus	UCSC	rn5
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+---                                                                                                                 ---
+---                                             - PRE PROCESSING -                                                  ---
+---                                                                                                                 ---
+-----------------------------------------------------------------------------------------------------------------------
+
+
+
+------------------------------------------------- PULL RAW DATA -------------------------------------------------------
+
+$ 0. * SRR NAMES (COMMA DELIMITED) => #SRR1759363,SRR1759364,SRR1759365,SRR1759366,SRR1759367,SRR1759368,SRR1759369,SRR1759370,SRR1759371,SRR1759372,SRR1993161,SRR1993162,SRR1993163,SRR1993164,SRR1993165,SRR1993166,SRR1993167,SRR1993168,SRR1993169,SRR1993170,SRR1993171,SRR1993172,SRR1993173,SRR1993174,SRR1993175,SRR1993176
+
+$ 1. * FTP COMMAND => ftp://ftp-trace.ncbi.nlm.nih.gov/sra/sra-instant/reads/ByStudy/sra/SRP/SRP057/SRP057603
+
+$ 2. TO DIRECTORY => /share/nordlab/rawdata/TBI_Meng
+
+------------------------------------------------- SAMPLE INFO ---------------------------------------------------------
+
+$ 3. SINGLE OR PAIRED END DATA (S/P) => P
+
+$ 4. * PAIRED SUFFIX (DIFFERENTIATING SUBSTRING OF FILENAMES) => _1
+
+------------------------------------------------- INDEXING PREP -------------------------------------------------------
+
+$ 5. REFERENCE GENOME SELECTION (SEE TABLE ABOVE, INPUT THE NUMBER UNDER X NEXT TO DESIRED GENOME) => 8
+
+$ 6. CUSTOMIZATION (T/F) => F
+
+------------------------------------------------- CUSTOMIZATIONS (ONLY IF CUSTOMIZATION == T) -------------------------
+
+$ 7. * REFERENCE GENOME ADDITIONS => 
+
+$ 8. * ANNOTATION ADDITIONS => 
+
+$ 9. * CUSTOM COMBINED GENOME FILE NAME => 
+
+$ 10. * CUSTOM COMBINED ANNOTATIONS FILE NAME => 
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+---                                                                                                                 ---
+---                                             - STAR PROCESSING -                                                 ---
+---                                                                                                                 ---
+-----------------------------------------------------------------------------------------------------------------------
+
+
+
+$ 11. STAR VERSION => star/2.5.2b
+
+------------------------------------------------- INDEXING ------------------------------------------------------------
+
+$ 12. OUTPUT FOR INDEX DIRECTORY => /share/nordlab/users/kjulim/STAR_INDEX/Rat_UCSC_rn5_50bp
+
+$ 13. RUN THREAD N => 8
+
+$ 14. SJBD OVERHANG => 49
+
+$ 15. * OTHER INDEX PARAMETERS (WILL BE APPENDED TO COMMAND) => 
+
+------------------------------------------------- MAPPING -------------------------------------------------------------
+
+$ 16. OUTPUT FOR MAPPING DIRECTORY => /share/nordlab/users/kjulim/TBI_Meng_processed
+
+$ 17. FASTA SUFFIX (.fasta, .fastq, .fa, etc.) => .fastq
+
+$ 18. * ZIPPED (.gz, .bzip2) => .gz
+
+$ 19. * OTHER MAPPING PARAMETERS (WILL BE APPENDED TO COMMAND) => --outFilterScoreMinOverLread 0.45 --outFilterMatchNminOverLread 0.45
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+---                                                                                                                 ---
+---                                             - POST PROCESSING -                                                 ---
+---                                                                                                                 ---
+-----------------------------------------------------------------------------------------------------------------------
+
+
+
+------------------------------------------------- FEATURE COUNTS (COVERAGE BY GENE) -----------------------------------
+
+$ 20. * SUBREAD VERSION => subread/1.5.0-p1
+
+$ 21. * OTHER FC PARAMETERS (WILL BE APPENDED TO COMMAND) => -t exon
+
+------------------------------------------------- MPILEUP (COVERAGE BY NUCLEOTIDE) ------------------------------------
+
+$ 22. * SAMTOOLS VERSION => samtools/1.4.1
+
+$ 23. * INPUT AMPLICONS FILE NAME (NO PATH) => 
+
+$ 24. * OTHER MP PARAMETERS (WILL BE APPENDED TO COMMAND) => -t AD
+
+-----------------------------------------------------------------------------------------------------------------------
+
+
+

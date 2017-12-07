@@ -1,0 +1,103 @@
+Author: Justin Lim
+Last update: 07/20/17
+
+This file will be copied into the results folder.
+
+Lines beginning with $ will be read into the pipeline after the => character. Lines containing * can be left blank, if applicable. Do not edit the format of this file.
+
+------------------------------------------------- NOTES ---------------------------------------------------------------
+
+SJBDOVERHANG: ReadLength - 1
+	PE100 = 99 (100 - 1)
+	SE100 = 99
+
+SAINDEX: min(14, log2(GenomeLength)/2 - 1)
+	14 (between 10-15 for mammalian genomes)
+
+------------------------------------------------- REFERENCE GENOME LIST -----------------------------------------------
+
+X	ORGANISM	SPECIES	ASSEMBLY	GENOME
+-------------------------------------------
+0	Human	Homo_sapiens	Gencode	GRCh38
+1	Human	Homo_sapiens	Gencode	GRCh37
+2	Human	Homo_sapiens	UCSC	hg19
+3	Mouse	Mus_musculus	Gencode	GRCm38
+4	Mouse	Mus_musculus	Gencode	GRCm37
+5	Mouse	Mus_musculus	Ensembl	GRCm38
+6	Mouse	Mus_musculus	UCSC	mm10
+7	Mouse	Mus_musculus	UCSC	mm9
+8	Rat	Rattus_norvegicus	UCSC	rn5
+
+------------------------------------------------- USER NOTES ----------------------------------------------------------
+
+CURRENT DATE: 07/20/17
+
+DESCRIPTION OF CURRENT PROJECT: Aligning 3 lanes of MIA data. 1 of 3 (L4).
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+------------------------------------------------- PROCESSING PREP -----------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------
+
+
+
+------------------------------------------------- PULL RAW DATA -------------------------------------------------------
+
+$ 0. FTP URL PATH => http://slims.bioinformatics.ucdavis.edu/Data/c7o0jnu02e/Unaligned50/Project_ANIZ_L4_H1003P_Zdilar/
+
+$ 1. RAW DATA SUFFIX (.sra, .fastq, etc.) => .fastq
+
+$ 2. OUTPUT DIRECTORY => /share/nordlab/rawdata/Project_ANIZ_L4_H1003P_Zdilar
+
+$ 3. * OUTPUT SUBDIRECTORY NAME (DO NOT INCLUDE FILE PATH) => 
+
+------------------------------------------------- SAMPLE INFO ---------------------------------------------------------
+
+$ 4. SINGLE OR PAIRED END DATA (S/P) => S
+
+$ 5. * PAIRED SUFFIX (STRING OF PAIRED DATA THAT DENOTES PAIRED END) => 
+
+------------------------------------------------- INDEXING PREP -------------------------------------------------------
+
+$ 6. REFERENCE GENOME SELECTION (SEE TABLE ABOVE. INPUT THE NUMBER UNDER X NEXT TO DESIRED GENOME) => 7
+
+$ 7. CUSTOMIZATION (T/F) => F
+
+------------------------------------------------- CUSTOMIZATIONS (ONLY IF CUSTOMIZATION == T) -------------------------
+
+$ 8. * GENOME ADDITIONS => 
+
+$ 9. * ANNOTATION ADDITIONS => 
+
+$ 10. * CUSTOM GENOME FILE NAME => 
+
+$ 11. * CUSTOM ANNOTATIONS FILE NAME => 
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+------------------------------------------------- STAR PROCESSING -----------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------
+
+
+
+------------------------------------------------- INDEXING ------------------------------------------------------------
+
+$ 12. OUTPUT DIRECTORY => /share/nordlab/users/kjulim/STAR_index_Mus_musculus_UCSC_mm9_notCustom
+
+$ 13. RUN THREAD N => 8
+
+$ 14. SJBD OVERHANG => 249
+
+$ 15. SA INDEX => 14
+
+------------------------------------------------- ALIGNING ------------------------------------------------------------
+
+$ 16. OUTPUT DIRECTORY => /share/nordlab/users/kjulim/Project_ANIZ_L4_H1003P_Zdilar_aligned
+
+$ 17. FASTA SUFFIX (.fasta, .fastq, .fa, etc.) => .fastq
+
+$ 18. * ZIPPED (gz, bzip2) => gz
+
+-----------------------------------------------------------------------------------------------------------------------

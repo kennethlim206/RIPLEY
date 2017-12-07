@@ -1,0 +1,3 @@
+Cre	protein_coding	exon	3	1985	.	+	0	gene_id "ENSMUSCUSTOM01"; gene_name "Cre"; transcript_id "ENSMUSCUSTOM01";
+tdTomato	protein_coding	exon	3	1434	.	+	0	gene_id "ENSMUSCUSTOM02"; gene_name "tdTomato"; transcript_id "ENSMUSCUSTOM02";
+EGFP	protein_coding	exon	3	723	.	+	0	gene_id "ENSMUSCUSTOM03"; gene_name "EGFP"; transcript_id "ENSMUSCUSTOM03";

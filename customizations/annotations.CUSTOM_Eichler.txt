@@ -1,0 +1,5 @@
+STARR	custom	gene	3200	4066	.	+	0	gene_id "ENSGCUSTOM01"; gene_name "Hsp68-Promoter"; transcript_id "ENSGCUSTOM01_PROMOTER";
+STARR	custom	gene	4079	4798	.	+	0	gene_id "ENSGCUSTOM02"; gene_name "EGFP"; transcript_id "ENSGCUSTOM02_EGFP";
+STARR	custom	gene	4815	4822	.	+	0	gene_id "ENSGCUSTOM03"; gene_name "PacI"; transcript_id "ENSGCUSTOM03_FEAT";
+STARR	custom	gene	4831	4838	.	+	0	gene_id "ENSGCUSTOM04"; gene_name "AscI"; transcript_id "ENSGCUSTOM04_FEAT";
+STARR	custom	gene	4868	5077	.	+	0	gene_id "ENSGCUSTOM05"; gene_name "_BGH"; transcript_id "ENSGCUSTOM05_FEAT";

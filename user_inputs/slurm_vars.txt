@@ -1,0 +1,71 @@
+Justin Lim
+Last update: 06/21/17
+
+Description: Use this file to manipulate certain variables for your sbatch runs. There are certain variables that are hardcoded in (output, error, job name, etc.). The variables that you are able to edit in this file deal with time and memory allocation.
+
+Lines beginning with $ will be read into the pipeline after the => characters. Do not edit the format of this file. It will most likely break the script if you do.
+
+-------------------------------------------------------------------------
+
+>>> PULL SRR/FASTQ DATA
+
+$ TIME => 48:00:00
+$ PARTITION => gc128
+$ CORES => 10
+$ MEM PER CPU => 8G
+
+>>> CUSTOMIZE
+
+$ TIME => 00:30:00
+$ PARTITION => gc
+$ CORES => default
+$ MEM PER CPU => default
+
+>>> INDEX
+
+$ TIME => 24:00:00
+$ PARTITION => gc128
+$ CORES => 10
+$ MEM PER CPU => 6G
+
+>>> ALIGN
+
+$ TIME => 24:00:00
+$ PARTITION => gc128
+$ CORES => 10
+$ MEM PER CPU => 8G
+
+>>> FEATURE COUNTS
+
+$ TIME => 06:00:00
+$ PARTITION => gc
+$ CORES => default
+$ MEM PER CPU => default
+
+>>> SAMTOOLS MPILEUP COUNTS
+
+$ TIME => 06:00:00
+$ PARTITION => gc128
+$ CORES => default
+$ MEM PER CPU => default
+
+>>> FASTQC
+
+$ TIME => 03:00:00
+$ PARTITION => gc
+$ CORES => default
+$ MEM PER CPU => default
+
+>>> RSEQC
+
+$ TIME => 104:00:00
+$ PARTITION => gc256
+$ CORES => 10
+$ MEM PER CPU => 8G
+
+>>> TRACKHUB
+
+$ TIME => 03:00:00
+$ PARTITION => gc
+$ CORES => default
+$ MEM PER CPU => default

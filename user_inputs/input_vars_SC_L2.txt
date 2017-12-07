@@ -1,0 +1,141 @@
+Author: Kenneth Justin Lim
+V3.02 10/02/17
+
+This file will be copied into all analysis REDs (RIPLEY Execution Directories).
+
+Lines beginning with $ will be read into the pipeline after the => characters. Lines containing * can be left blank, if applicable. Do not edit the format of this file.
+
+
+
+ =====================================================================================================================
+||/                                                                                                                 \||
+||                                                                                                                   ||
+||                                                                                                                   ||
+||                                                     - RIPLEY -                                                    ||
+||                                                                                                                   ||
+||                                                                                                                   ||
+||\                                                                                                                 /||
+ =====================================================================================================================
+
+
+
+------------------------------------------------- USER NOTES ----------------------------------------------------------
+
+CURRENT DATE: 11/03/17
+
+DESCRIPTION OF CURRENT PROJECT: Re-aligning old SC data. Lane 2/6.
+
+------------------------------------------------- REFERENCE GENOME LIST (X) -------------------------------------------
+
+X	ORGANISM	SPECIES	ASSEMBLY	GENOME
+-------------------------------------------
+0	Human	Homo_sapiens	Gencode	GRCh38
+1	Human	Homo_sapiens	Gencode	GRCh37
+2	Human	Homo_sapiens	UCSC	hg19
+3	Mouse	Mus_musculus	Gencode	GRCm38
+4	Mouse	Mus_musculus	Gencode	GRCm37
+5	Mouse	Mus_musculus	Ensembl	GRCm38
+6	Mouse	Mus_musculus	UCSC	mm10
+7	Mouse	Mus_musculus	UCSC	mm9
+8	Rat	Rattus_norvegicus	UCSC	rn5
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+---                                                                                                                 ---
+---                                             - PRE PROCESSING -                                                  ---
+---                                                                                                                 ---
+-----------------------------------------------------------------------------------------------------------------------
+
+
+
+------------------------------------------------- PULL RAW DATA -------------------------------------------------------
+
+$ 0. * SRR NAMES (COMMA DELIMITED) => 
+
+$ 1. * FTP COMMAND => 
+
+$ 2. TO DIRECTORY => /share/nordlab/rawdata/Project_ANIZ_L2_C1_799-1056-MGE
+
+------------------------------------------------- SAMPLE INFO ---------------------------------------------------------
+
+$ 3. SINGLE OR PAIRED END DATA (S/P) => S
+
+$ 4. * PAIRED SUFFIX (DIFFERENTIATING SUBSTRING OF FILENAMES) => _R1
+
+------------------------------------------------- INDEXING PREP -------------------------------------------------------
+
+$ 5. REFERENCE GENOME SELECTION (SEE TABLE ABOVE, INPUT THE NUMBER UNDER X NEXT TO DESIRED GENOME) => 5
+
+$ 6. CUSTOMIZATION (T/F) => T
+
+------------------------------------------------- CUSTOMIZATIONS (ONLY IF CUSTOMIZATION == T) -------------------------
+
+$ 7. * REFERENCE GENOME ADDITIONS => C1-singlecell-markers.fa
+
+$ 8. * ANNOTATION ADDITIONS => annotations.CUSTOM.txt
+
+$ 9. * CUSTOM COMBINED GENOME FILE NAME => reference_custom.fa
+
+$ 10. * CUSTOM COMBINED ANNOTATIONS FILE NAME => annotation_custom.gtf
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+---                                                                                                                 ---
+---                                             - STAR PROCESSING -                                                 ---
+---                                                                                                                 ---
+-----------------------------------------------------------------------------------------------------------------------
+
+
+
+$ 11. STAR VERSION => star/2.5.2b
+
+------------------------------------------------- INDEXING ------------------------------------------------------------
+
+$ 12. OUTPUT FOR INDEX DIRECTORY => /share/nordlab/users/kjulim/STAR_INDEX/Mouse_ensembl_GRCm38_100bp_CUSTOM
+
+$ 13. RUN THREAD N => 8
+
+$ 14. SJBD OVERHANG => 99
+
+$ 15. * OTHER INDEX PARAMETERS (WILL BE APPENDED TO COMMAND) => 
+
+------------------------------------------------- MAPPING -------------------------------------------------------------
+
+$ 16. OUTPUT FOR MAPPING DIRECTORY => /share/nordlab/users/kjulim/SC_Old_L2_processed
+
+$ 17. FASTA SUFFIX (.fasta, .fastq, .fa, etc.) => .fastq
+
+$ 18. * ZIPPED (.gz, .bzip2) => 
+
+$ 19. * OTHER MAPPING PARAMETERS (WILL BE APPENDED TO COMMAND) => 
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+---                                                                                                                 ---
+---                                             - POST PROCESSING -                                                 ---
+---                                                                                                                 ---
+-----------------------------------------------------------------------------------------------------------------------
+
+
+
+------------------------------------------------- FEATURE COUNTS (COVERAGE BY GENE) -----------------------------------
+
+$ 20. * SUBREAD VERSION => subread/1.5.0-p1
+
+$ 21. * OTHER FC PARAMETERS (WILL BE APPENDED TO COMMAND) => -t exon -M
+
+------------------------------------------------- MPILEUP (COVERAGE BY NUCLEOTIDE) ------------------------------------
+
+$ 22. * SAMTOOLS VERSION => samtools/1.4.1
+
+$ 23. * INPUT AMPLICONS FILE NAME (NO PATH) => 
+
+$ 24. * OTHER MP PARAMETERS (WILL BE APPENDED TO COMMAND) => 
+
+-----------------------------------------------------------------------------------------------------------------------
+
+
+
